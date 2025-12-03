@@ -296,8 +296,8 @@ const updateUserAvatar = asyncHandler(async (req, res) => {
 
     return res.status(200).json(
         new ApiResponse(200, user, "Avatar uploaded successfully")
-    )
-})
+    );
+});
 
 const updateUserCoverImage = asyncHandler(async (req, res) => {
     const coverImageLocalPath = req.file?.path;
@@ -324,8 +324,8 @@ const updateUserCoverImage = asyncHandler(async (req, res) => {
 
     return res.status(200).json(
         new ApiResponse(200, user, "Cover image uploaded successfully")
-    )
-})
+    );
+});
 
 
 
