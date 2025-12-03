@@ -1,7 +1,7 @@
 import { ApiError } from "../utils/ApiError.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { User } from '../models/user.model.js';
-import { uploadOnloudinary } from "../utils/cloudinary.js";
+import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import jwt from "jsonwebtoken";
 
@@ -66,8 +66,8 @@ const registerUser = asyncHandler( async (req,res) => {
         throw new ApiError(400, "Avatar file is required");
     };
 
-    const avatar = await uploadOnloudinary(avatarLocalPath);
-    const coverImage = await uploadOnloudinary(coverImageLocalPath);
+    const avatar = await uploadOnCloudinary(avatarLocalPath);
+    const coverImage = await uploadOnCloudinary(coverImageLocalPath);
 
     if (!avatar){
         throw new ApiError(400, "All fields are required");
@@ -278,7 +278,7 @@ const updateUserAvatar = asyncHandler(async (req, res) => {
         throw new ApiError(400, "Avatar file is missing")
     };
 
-    const avatar = await uploadOnloudinary(avatarLocalPath);
+    const avatar = await uploadOnCloudinary(avatarLocalPath);
 
     if (!avatar.url) {
         throw new ApiError(500, "Error whole uploading avatar");
@@ -306,7 +306,7 @@ const updateUserCoverImage = asyncHandler(async (req, res) => {
         throw new ApiError(400, "Cover image file is missing")
     };
 
-    const coverImage = await uploadOnloudinary(coverImageLocalPath);
+    const coverImage = await uploadOnCloudinary(coverImageLocalPath);
 
     if (!coverImage.url) {
         throw new ApiError(500, "Error whole uploading cover image");
